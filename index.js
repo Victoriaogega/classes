@@ -1,6 +1,38 @@
 // Question 1
 
 // You are building a feature rollout system for a startup where a FeatureToggle constructor function has properties: featureName (string), isEnabled (boolean), and userGroupAccess (array of strings like "betaTesters", "admins"), and you must use a prototype method canAccess(userRole) to return true or false, a method toggleFeature(flag) to enable or disable the feature, and simulate access attempts using if-else and switch statements for different roles.
+function FeatureToggle(featureName, isEnabled, userGroupAccess) {
+    this.featureName = featureName
+    this.isEnabled = isEnabled
+    this.userGroupAccess = userGroupAccess
+
+    this.toggleFeature = function (flag) {
+   let feature = this.isEnabled = flag;
+   if(this.isEnabled== true){
+    switch (this.userRole){
+        case "Admin":
+            console.log("Full access")
+            break;
+            case "User":
+                console.log("Limited access")
+                break;
+                default:
+                    console.log("Limited access")
+                    break;
+    }
+}
+    }
+    
+}
+FeatureToggle.prototype.canAcces = function (userRole) {
+   return this.userGroupAccess.includes(userRole);
+    }
+
+    let firstFeature = new FeatureToggle("log in",true,["betatesters","admin"])
+
+     console.log(firstFeature);
+     console.log(firstFeature.canAcces());
+    console.log(firstFeature.toggleFeature());
 
 
 //question 2
@@ -150,7 +182,7 @@ Course.prototype.enrolledStudents = function(expertise){
 return this.students.filter(student => this.instructor.expertise === expertise).length;
 }
 Course.prototype.message = function(){
-if(this.student.name.length > 5){return `${this.instructor.name}:You have more than 5 students.`}
+if(this.student.length > 5){return `${this.instructor.name}:You have more than 5 students.`}
 else{`${this.instructor.name}:You have less than 5 students.`}
 }
 
@@ -161,10 +193,10 @@ let courses = new Course ("Javascript",{name:"Hunter",expertise:"frontend"},[
     {name:"Ogega",completionStatus:true}
 ])
 
- console.log(courses)
- console.log(courses.message());
+ console.log(courses);
   console.log(courses.enrolledStudents("frontend"));
   console.log(courses.namesThatCompletedCourse());
+  console.log(courses.message());
 
 
 
