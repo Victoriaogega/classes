@@ -98,9 +98,9 @@ return this.items.reduce((x,cost) => x+cost.quantity * cost.unitPrice,0)
 Order.prototype.updateOrderStatus = function(){
 if (this.status.includes("successful")){
     console.log("Your payment has been successful.")}
-    else{"Your payment is being processed."}
+    else{console.log("Your payment is being processed.")}
 
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 Order.prototype.categorizeOrederUrgency = function(){
 
 }
@@ -164,7 +164,7 @@ Employee.prototype.averageScore = function(){
      console.log(employee.newFeedback());
 
 
-    //      Question 5
+        //  Question 5
 
 // Build a simple e-learning system where a Course class has properties: title (string), instructor (object with name and expertise), and students (array of objects with name and completionStatus), then add prototype methods to return names of students who completed the course, count enrolled students by expertise area, and use control flow to output different messages for instructors with more or less than 5 students.
 
@@ -180,23 +180,44 @@ return this.students.filter(student => student.completionStatus === true)
 }
 Course.prototype.enrolledStudents = function(expertise){
 return this.students.filter(student => this.instructor.expertise === expertise).length;
+
 }
 Course.prototype.message = function(){
 if(this.student.length > 5){return `${this.instructor.name}:You have more than 5 students.`}
 else{`${this.instructor.name}:You have less than 5 students.`}
 }
 
-let courses = new Course ("Javascript",{name:"Hunter",expertise:"frontend"},[
+let courses = [
+    new Course ("backend",{name:"Spice",expertise:"javascript"},[
     {name:"Meron",completionStatus:true},
     {name:"Neema",completionStatus:false},
     {name:"Yordanos",completionStatus:false},
-    {name:"Ogega",completionStatus:true}
+    {name:"Ogega",completionStatus:true},
+     {name:"Ogega",completionStatus:true}
+]),
+new Course("backend",{name:"Allan",expertise:"python"},[
+    {name:"Pheobe",completionStatus:true},
+    {name:"Judy",completionStatus:false},
+    {name:"Derrick",completionStatus:false},
+    {name:"Jeff",completionStatus:true},
+     {name:"Rael",completionStatus:true},
+     
+]),
+new Course("backend",{name:"Wesley",expertise:"java"},[
+    {name:"Sylvia",completionStatus:true},
+    {name:"Alvin",completionStatus:false},
+    {name:"Specioza",completionStatus:false},
+    {name:"Alex",completionStatus:true},
+    {name:"Jiovan",completionStatus:true},
+    {name:"Ogero",completionStatus:true}
 ])
+]
 
- console.log(courses);
-  console.log(courses.enrolledStudents("frontend"));
-  console.log(courses.namesThatCompletedCourse());
-  console.log(courses.message());
+//  console.log(courses);
+  
+  courses.forEach(courses => console.log(courses.enrolledStudents("javascript")))
+courses.forEach(courses =>console.log(courses.namesThatCompletedCourse()) )  ;
+courses.forEach(courses =>  console.log(courses.message()) )  
 
 
 
